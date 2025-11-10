@@ -3,15 +3,15 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { MapPinned, Plus, Edit, Trash2, Clock } from 'lucide-react';
-import { toast } from 'sonner';
+import { useToast } from '@/context/ToastContext';
 
 const ManageRoutes = () => {
   const handleEdit = (routeId: string) => {
-    toast.info('Edit functionality coming soon');
+    showToast('Edit functionality coming soon');
   };
 
   const handleDelete = (routeId: string) => {
-    toast.success('Route deleted successfully');
+    showToast('Route deleted successfully');
   };
 
   return (

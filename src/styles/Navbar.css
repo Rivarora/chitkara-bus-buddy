@@ -1,0 +1,130 @@
+.navbar {
+  background-color: white;
+  border-bottom: 1px solid var(--color-border);
+  padding: 0.75rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 57px;
+}
+
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.navbar-logo {
+  width: 2rem;
+  height: 2rem;
+  background-color: var(--color-primary);
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.navbar-logo svg {
+  color: white;
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.navbar-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--color-foreground);
+}
+
+.navbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.navbar-notification {
+  position: relative;
+}
+
+.navbar-notification-badge {
+  position: absolute;
+  top: 0.25rem;
+  right: 0.25rem;
+  width: 0.5rem;
+  height: 0.5rem;
+  background-color: var(--color-accent);
+  border-radius: 50%;
+}
+
+.navbar-user {
+  position: relative;
+}
+
+.navbar-user-avatar {
+  width: 2rem;
+  height: 2rem;
+  background-color: var(--color-primary);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.navbar-user-avatar svg {
+  width: 1rem;
+  height: 1rem;
+  color: white;
+}
+
+.dropdown-menu {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 0.5rem);
+  background-color: white;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-lg);
+  min-width: 14rem;
+  z-index: 50;
+}
+
+.dropdown-header {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.dropdown-header-name {
+  font-weight: 500;
+  font-size: 0.875rem;
+}
+
+.dropdown-header-email {
+  font-size: 0.75rem;
+  color: var(--color-muted);
+}
+
+.dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.625rem 1rem;
+  font-size: 0.875rem;
+  color: var(--color-foreground);
+  cursor: pointer;
+  transition: background-color 0.2s;
+  border: none;
+  background: none;
+  width: 100%;
+  text-align: left;
+}
+
+.dropdown-item:hover {
+  background-color: var(--color-secondary);
+}
+
+.dropdown-item svg {
+  width: 1rem;
+  height: 1rem;
+  color: var(--color-muted);
+}

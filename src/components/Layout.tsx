@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useAuth } from '@/context/AuthContext';
 import Navbar from './Navbar';
 import Sidebar from './Sidebar';
+import '../styles/Layout.css';
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -23,11 +24,11 @@ const Layout = ({ children }: LayoutProps) => {
   }
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="layout">
       <Navbar />
-      <div className="flex">
+      <div className="layout-content">
         <Sidebar />
-        <main className="flex-1 overflow-auto">
+        <main className="main-content">
           {children}
         </main>
       </div>

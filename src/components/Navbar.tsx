@@ -1,19 +1,13 @@
-import { Bell, User, LogOut } from 'lucide-react';
+import { useState } from 'react';
+import { Bell, User, LogOut, Bus } from 'lucide-react';
 import { useAuth } from '@/context/AuthContext';
 import { useNavigate } from 'react-router-dom';
-import { Button } from '@/components/ui/button';
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu';
+import '../styles/Navbar.css';
 
 const Navbar = () => {
   const { user, logout } = useAuth();
   const navigate = useNavigate();
+  const [showDropdown, setShowDropdown] = useState(false);
 
   const handleLogout = () => {
     logout();
@@ -22,49 +16,51 @@ const Navbar = () => {
 
   const handleProfile = () => {
     navigate(user?.role === 'admin' ? '/admin/profile' : '/user/profile');
+    setShowDropdown(false);
   };
 
   return (
-    <nav className="bg-card border-b border-border px-4 py-3 flex items-center justify-between">
-      <div className="flex items-center gap-2">
-        <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
-          <span className="text-primary-foreground font-bold text-sm">B</span>
+    <nav className="navbar">
+      <div className="navbar-brand">
+        <div className="navbar-logo">
+          <Bus />
         </div>
-        <h1 className="text-xl font-bold text-foreground">Busify</h1>
+        <h1 className="navbar-title">Busify</h1>
       </div>
 
-      <div className="flex items-center gap-4">
-        <Button variant="ghost" size="icon" className="relative">
-          <Bell className="h-5 w-5" />
-          <span className="absolute top-1 right-1 w-2 h-2 bg-accent rounded-full"></span>
-        </Button>
+      <div className="navbar-actions">
+        <button className="btn btn-ghost btn-icon navbar-notification">
+          <Bell size={20} />
+          <span className="navbar-notification-badge"></span>
+        </button>
 
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <Button variant="ghost" size="icon" className="rounded-full">
-              <div className="w-8 h-8 bg-primary rounded-full flex items-center justify-center">
-                <User className="h-4 w-4 text-primary-foreground" />
+        <div className="navbar-user">
+          <button
+            className="btn btn-ghost btn-icon"
+            onClick={() => setShowDropdown(!showDropdown)}
+          >
+            <div className="navbar-user-avatar">
+              <User />
+            </div>
+          </button>
+
+          {showDropdown && (
+            <div className="dropdown-menu">
+              <div className="dropdown-header">
+                <div className="dropdown-header-name">{user?.name}</div>
+                <div className="dropdown-header-email">{user?.email}</div>
               </div>
-            </Button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent align="end" className="w-56">
-            <DropdownMenuLabel>
-              <div>
-                <p className="font-medium">{user?.name}</p>
-                <p className="text-xs text-muted-foreground">{user?.email}</p>
-              </div>
-            </DropdownMenuLabel>
-            <DropdownMenuSeparator />
-            <DropdownMenuItem onClick={handleProfile}>
-              <User className="mr-2 h-4 w-4" />
-              Profile
-            </DropdownMenuItem>
-            <DropdownMenuItem onClick={handleLogout}>
-              <LogOut className="mr-2 h-4 w-4" />
-              Logout
-            </DropdownMenuItem>
-          </DropdownMenuContent>
-        </DropdownMenu>
+              <button className="dropdown-item" onClick={handleProfile}>
+                <User size={16} />
+                Profile
+              </button>
+              <button className="dropdown-item" onClick={handleLogout}>
+                <LogOut size={16} />
+                Logout
+              </button>
+            </div>
+          )}
+        </div>
       </div>
     </nav>
   );

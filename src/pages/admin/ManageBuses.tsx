@@ -3,15 +3,15 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Bus, Plus, Edit, Trash2 } from 'lucide-react';
-import { toast } from 'sonner';
+import { useToast } from '@/context/ToastContext';
 
 const ManageBuses = () => {
   const handleEdit = (busId: string) => {
-    toast.info('Edit functionality coming soon');
+    showToast('Edit functionality coming soon');
   };
 
   const handleDelete = (busId: string) => {
-    toast.success('Bus deleted successfully');
+    showToast('Bus deleted successfully');
   };
 
   const statusColors = {

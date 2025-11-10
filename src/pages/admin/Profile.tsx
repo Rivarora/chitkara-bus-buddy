@@ -4,14 +4,14 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { User, Mail, Shield, Settings } from 'lucide-react';
-import { toast } from 'sonner';
+import { useToast } from '@/context/ToastContext';
 
 const AdminProfile = () => {
   const { user } = useAuth();
 
   const handleSave = (e: React.FormEvent) => {
     e.preventDefault();
-    toast.success('Profile updated successfully!');
+    showToast('Profile updated successfully!');
   };
 
   return (

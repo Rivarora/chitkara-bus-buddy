@@ -1,11 +1,11 @@
 import { NavLink } from 'react-router-dom';
-import { 
-  LayoutDashboard, 
-  MapPin, 
-  Route, 
-  Bell, 
-  CreditCard, 
-  AlertCircle, 
+import {
+  LayoutDashboard,
+  MapPin,
+  Route,
+  Bell,
+  CreditCard,
+  AlertCircle,
   User,
   Users,
   Bus,
@@ -15,7 +15,7 @@ import {
   Wallet
 } from 'lucide-react';
 import { useAuth } from '@/context/AuthContext';
-import { cn } from '@/lib/utils';
+import '../styles/Sidebar.css';
 
 const Sidebar = () => {
   const { user } = useAuth();
@@ -44,8 +44,8 @@ const Sidebar = () => {
   const links = user?.role === 'admin' ? adminLinks : userLinks;
 
   return (
-    <aside className="w-64 bg-sidebar border-r border-sidebar-border min-h-[calc(100vh-57px)]">
-      <nav className="p-4 space-y-2">
+    <aside className="sidebar">
+      <nav className="sidebar-nav">
         {links.map((link) => {
           const Icon = link.icon;
           return (
@@ -53,14 +53,10 @@ const Sidebar = () => {
               key={link.to}
               to={link.to}
               className={({ isActive }) =>
-                cn(
-                  'flex items-center gap-3 px-4 py-3 rounded-lg transition-all',
-                  'text-sidebar-foreground hover:bg-sidebar-accent',
-                  isActive && 'bg-sidebar-primary text-sidebar-primary-foreground font-medium'
-                )
+                `sidebar-link ${isActive ? 'active' : ''}`
               }
             >
-              <Icon className="h-5 w-5" />
+              <Icon />
               <span>{link.label}</span>
             </NavLink>
           );

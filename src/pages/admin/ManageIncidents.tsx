@@ -3,11 +3,11 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { FileText, Check, Clock } from 'lucide-react';
-import { toast } from 'sonner';
+import { useToast } from '@/context/ToastContext';
 
 const ManageIncidents = () => {
   const handleResolve = (incidentId: string) => {
-    toast.success('Incident marked as resolved');
+    showToast('Incident marked as resolved');
   };
 
   return (

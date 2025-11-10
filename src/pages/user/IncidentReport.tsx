@@ -7,7 +7,7 @@ import { Label } from '@/components/ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Badge } from '@/components/ui/badge';
 import { AlertCircle, Check, Clock } from 'lucide-react';
-import { toast } from 'sonner';
+import { useToast } from '@/context/ToastContext';
 
 const IncidentReport = () => {
   const [busId, setBusId] = useState('');
@@ -15,7 +15,7 @@ const IncidentReport = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    toast.success('Incident reported successfully!');
+    showToast('Incident reported successfully!');
     setBusId('');
     setDescription('');
   };

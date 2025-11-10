@@ -6,7 +6,7 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
 import { Megaphone, Send, Trash2 } from 'lucide-react';
-import { toast } from 'sonner';
+import { useToast } from '@/context/ToastContext';
 
 const ManageNotifications = () => {
   const [title, setTitle] = useState('');
@@ -14,13 +14,13 @@ const ManageNotifications = () => {
 
   const handleSend = (e: React.FormEvent) => {
     e.preventDefault();
-    toast.success('Notification sent to all users!');
+    showToast('Notification sent to all users!');
     setTitle('');
     setMessage('');
   };
 
   const handleDelete = (notificationId: string) => {
-    toast.success('Notification deleted successfully');
+    showToast('Notification deleted successfully');
   };
 
   return (

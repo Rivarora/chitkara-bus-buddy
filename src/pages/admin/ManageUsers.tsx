@@ -3,15 +3,15 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Users, Plus, Edit, Trash2 } from 'lucide-react';
-import { toast } from 'sonner';
+import { useToast } from '@/context/ToastContext';
 
 const ManageUsers = () => {
   const handleEdit = (userId: string) => {
-    toast.info('Edit functionality coming soon');
+    showToast('Edit functionality coming soon');
   };
 
   const handleDelete = (userId: string) => {
-    toast.success('User deleted successfully');
+    showToast('User deleted successfully');
   };
 
   return (
